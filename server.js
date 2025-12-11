@@ -7,13 +7,9 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-
-// routes
 app.use("/auth", authRoute);
-
-// test route
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("Bintang oy oy");
 });
 
 app.listen(process.env.PORT, () => {

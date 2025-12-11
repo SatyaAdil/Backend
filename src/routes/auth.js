@@ -9,7 +9,6 @@ const client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_SECRET
 );
 
-// Redirect ke Google
 router.get("/google", (req, res) => {
   const url = client.generateAuthUrl({
     access_type: "offline",
@@ -21,7 +20,6 @@ router.get("/google", (req, res) => {
   res.redirect(url);
 });
 
-// Callback
 router.get("/google/callback", async (req, res) => {
   const { code } = req.query;
 
@@ -38,7 +36,6 @@ router.get("/google/callback", async (req, res) => {
 
     const payload = ticket.getPayload();
 
-    // Data user
     const user = {
       name: payload.name,
       email: payload.email,
